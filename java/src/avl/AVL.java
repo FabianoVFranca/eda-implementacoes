@@ -300,21 +300,16 @@ class Node {
     }
 
     public boolean isLeftPending() {
-        int left = this.left == null ? -1 : this.left.height();
-        int right = this.right == null ? -1 : this.right.height();
-        return left - right >= 1;
+        return this.balance() >= 1;  
     }
-
+    
     public boolean isRightPending() {
-        int left = this.left == null ? -1 : this.left.height();
-        int right = this.right == null ? -1 : this.right.height();
-        return left - right <= -1;
+        return this.balance() <= -1; 
     }
-
+    
     public boolean isBalanced() {
-        int left = this.left == null ? -1 : this.left.height();
-        int right = this.right == null ? -1 : this.right.height();
-        return left - right >= -1 && left - right <= 1;
+        int balance = this.balance();
+        return balance >= -1 && balance <= 1; 
     }
 
 }
